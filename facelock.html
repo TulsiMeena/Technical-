@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Face Lock (Web)</title>
+    <link rel="stylesheet" href="facelock.css">
+    <!-- Load face-api.js from a CDN -->
+    <script defer src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+    <script defer src="facelock.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Advanced Face Lock System</h1>
+
+        <div id="loading" class="status-box info">
+            Loading AI Models... Please wait. (AI मॉडल लोड हो रहे हैं...)
+        </div>
+
+        <div id="setup-section" class="hidden">
+            <div class="step-card">
+                <h2>Step 1: Upload Reference Image (मालिक की फोटो डालें)</h2>
+                <p>Upload a clear picture of your face to act as the key.</p>
+                <input type="file" id="imageUpload" accept="image/png, image/jpeg">
+                <br>
+                <img id="referenceImagePreview" style="max-width: 200px; display: none; margin-top: 10px; border-radius: 8px;">
+                <p id="upload-status" class="status-msg"></p>
+            </div>
+
+            <div class="step-card">
+                <h2>Step 2: Start Webcam (कैमरा चालू करें)</h2>
+                <button id="startWebcamBtn" disabled>Start Face Lock</button>
+            </div>
+        </div>
+
+        <div id="video-section" class="hidden">
+            <div class="video-container">
+                <video id="video" width="640" height="480" autoplay muted></video>
+                <canvas id="overlay"></canvas>
+            </div>
+            <div id="lock-status" class="lock-status locked">
+                LOCKED (Waiting for match...)
+            </div>
+            <button id="stopWebcamBtn">Stop Camera</button>
+        </div>
+    </div>
+</body>
+</html>

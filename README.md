@@ -1,6 +1,24 @@
-# Face Lock System
+# Advanced Face Lock System
 
-A simple face lock authentication system built with Python, OpenCV, and the `face_recognition` library.
+An advanced face lock authentication system built with Python (`face_recognition`), and a newly added Web-based version using HTML, CSS, and JavaScript (`face-api.js`).
+
+## Web Version (No Installation Required!) / वेब वर्जन (बिना इंस्टॉल किए चलाएं!)
+
+You can now run this entirely in your web browser without installing anything!
+(अब आप इसे बिना कुछ इंस्टॉल किए सीधे अपने वेब ब्राउज़र में चला सकते हैं!)
+
+1. Just open `facelock.html` in your web browser (Chrome, Edge, Firefox, Safari).
+   (बस अपने वेब ब्राउज़र में `facelock.html` खोलें।)
+2. Upload a clear picture of your face to act as the key.
+   (चाबी के रूप में काम करने के लिए अपने चेहरे की एक स्पष्ट तस्वीर अपलोड करें।)
+3. Click "Start Face Lock" and allow camera permissions.
+   ("Start Face Lock" पर क्लिक करें और कैमरे की अनुमति दें।)
+
+---
+
+## Python Version / पायथन वर्जन
+
+A Python-based face lock authentication system built with OpenCV and the `face_recognition` library.
 
 ## Prerequisites / पूर्व शर्तें
 

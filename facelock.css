@@ -1,0 +1,122 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212;
+    color: #ffffff;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    max-width: 800px;
+    width: 100%;
+    text-align: center;
+}
+
+h1 {
+    color: #4CAF50;
+    margin-bottom: 30px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.status-box {
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.info {
+    background-color: #2196F3;
+    color: white;
+}
+
+.step-card {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #333;
+}
+
+h2 {
+    font-size: 1.2rem;
+    margin-top: 0;
+    color: #e0e0e0;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover:not(:disabled) {
+    background-color: #45a049;
+}
+
+button:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+}
+
+.video-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 3px solid #333;
+    background-color: #000;
+}
+
+video {
+    display: block;
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.lock-status {
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s;
+}
+
+.locked {
+    background-color: #f44336;
+    color: white;
+}
+
+.unlocked {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.status-msg {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+#imageUpload {
+    padding: 10px;
+    background: #333;
+    border-radius: 5px;
+    color: white;
+}
