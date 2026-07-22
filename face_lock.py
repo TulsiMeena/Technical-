@@ -14,17 +14,21 @@ def main():
         print("Please place an image named 'owner.jpg' in this directory.")
         sys.exit(1)
 
-    print("Loading reference image...")
+    print("Loading reference image for advanced profile (This may take a moment)...")
     # Load the reference image and get its face encoding
     owner_image = face_recognition.load_image_file(reference_image_path)
-    owner_face_encodings = face_recognition.face_encodings(owner_image)
+
+    # ADVANCED: Use num_jitters=100 to calculate the face encoding 100 times and average it.
+    # This creates a highly robust and accurate reference profile.
+    # We also explicitly specify model='large'
+    owner_face_encodings = face_recognition.face_encodings(owner_image, num_jitters=100, model="large")
 
     if len(owner_face_encodings) == 0:
-        print("Error: No face found in the reference image. Please use a clear picture.")
+        print("Error: No face found in the reference image. Please use a clear and well-lit picture.")
         sys.exit(1)
 
     owner_face_encoding = owner_face_encodings[0]
-    print("Reference image loaded successfully!")
+    print("Advanced reference profile created successfully!")
 
     # 2. Initialize the webcam
     print("Starting webcam...")
@@ -53,19 +57,25 @@ def main():
 
         # Loop through each face in this frame of video
         for (top, right, bottom, left), face_encoding in zip(face_locations, face_encodings):
-            # See if the face is a match for the known face(s)
-            matches = face_recognition.compare_faces([owner_face_encoding], face_encoding)
-
-            # Use the known face with the smallest distance to the new face
+            # Calculate the face distance (lower is better, 0 is a perfect match)
             face_distances = face_recognition.face_distance([owner_face_encoding], face_encoding)
-            best_match_index = np.argmin(face_distances)
+            best_match_distance = face_distances[0]
 
-            if matches[best_match_index]:
-                name = "UNLOCKED"
+            # ADVANCED: Strict tolerance for high security.
+            # Default is 0.6. We use 0.45 for much stricter, granular matching.
+            STRICT_TOLERANCE = 0.45
+
+            # Calculate confidence percentage for display
+            confidence = max(0, round((1.0 - best_match_distance) * 100, 1))
+
+            if best_match_distance <= STRICT_TOLERANCE:
+                status = "UNLOCKED"
                 color = (0, 255, 0) # Green for unlocked
             else:
-                name = "LOCKED"
+                status = "LOCKED"
                 color = (0, 0, 255) # Red for locked
+
+            text_to_display = f"{status} ({confidence}%)"
 
             # Draw a box around the face
             cv2.rectangle(frame, (left, top), (right, bottom), color, 2)
@@ -73,7 +83,9 @@ def main():
             # Draw a label with a name below the face
             cv2.rectangle(frame, (left, bottom - 35), (right, bottom), color, cv2.FILLED)
             font = cv2.FONT_HERSHEY_DUPLEX
-            cv2.putText(frame, name, (left + 6, bottom - 6), font, 1.0, (255, 255, 255), 1)
+
+            # Adjust font scale based on text length to ensure it fits, or just use a smaller font
+            cv2.putText(frame, text_to_display, (left + 6, bottom - 6), font, 0.6, (255, 255, 255), 1)
 
         # Display the resulting image
         cv2.imshow('Face Lock System', frame)
