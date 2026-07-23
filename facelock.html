@@ -35,8 +35,11 @@
 
         <div id="video-section" class="hidden">
             <div class="video-container">
-                <video id="video" width="640" height="480" autoplay muted></video>
+                <video id="video" width="640" height="480" autoplay muted playsinline></video>
                 <canvas id="overlay"></canvas>
+            </div>
+            <div id="liveness-status" class="status-box" style="background-color: #ff9800; color: white;">
+                Anti-Spoofing: Please BLINK to prove you are real. (फोटो से बचने के लिए अपनी पलकें झपकाएं)
             </div>
             <div id="lock-status" class="lock-status locked">
                 LOCKED (Waiting for match...)
