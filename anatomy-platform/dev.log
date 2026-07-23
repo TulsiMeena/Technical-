@@ -1,0 +1,14 @@
+
+> anatomy-platform@0.1.0 dev
+> next dev
+
+▲ Next.js 16.2.11 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.2:3000
+✓ Ready in 789ms
+
+ GET / 200 in 3.4s (next.js: 3.0s, application-code: 398ms)
+○ Compiling /viewer ...
+ GET /viewer 200 in 4.5s (next.js: 3.6s, application-code: 896ms)
+ GET /api/organs 200 in 650ms (next.js: 621ms, application-code: 29ms)
+[browser] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
