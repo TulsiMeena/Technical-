@@ -200,13 +200,21 @@ function renderDocuments() {
     if (doc.type.startsWith('image/')) {
       card.innerHTML = `
         <img src="${doc.data}" class="doc-preview" alt="preview">
-        <div class="doc-name">${doc.name}</div>
+        <div class="doc-name"></div>
       `;
+      card.querySelector('.doc-name').textContent = doc.name;
+    } else if (doc.type.startsWith('audio/')) {
+      card.innerHTML = `
+        <div class="doc-icon">🎵</div>
+        <div class="doc-name"></div>
+      `;
+      card.querySelector('.doc-name').textContent = doc.name;
     } else {
       card.innerHTML = `
         <div class="doc-icon">📄</div>
-        <div class="doc-name">${doc.name}</div>
+        <div class="doc-name"></div>
       `;
+      card.querySelector('.doc-name').textContent = doc.name;
     }
 
     grid.appendChild(card);
@@ -233,6 +241,12 @@ function viewDocument(id) {
     const img = document.createElement('img');
     img.src = doc.data;
     contentArea.appendChild(img);
+  } else if (doc.type.startsWith('audio/')) {
+    const audio = document.createElement('audio');
+    audio.src = doc.data;
+    audio.controls = true;
+    audio.style.width = '100%';
+    contentArea.appendChild(audio);
   } else {
     // PDF or other - generic fallback
     const iframe = document.createElement('iframe');
