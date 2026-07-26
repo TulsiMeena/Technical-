@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@theme {
+  --color-nexus-primary: #00f0ff;
+  --color-nexus-secondary: #8a2be2;
+  --color-nexus-accent: #00ffff;
+  --color-nexus-bg-black: #050505;
+  --color-nexus-bg-navy: #000b18;
+  --color-nexus-glass: rgba(255, 255, 255, 0.05);
+  --color-nexus-glass-border: rgba(255, 255, 255, 0.1);
+}
+
+:root {
+  --background: var(--color-nexus-bg-black);
+  --foreground: #ffffff;
+}
+
+body {
+  background-color: var(--background);
+  background-image: radial-gradient(circle at 50% 50%, var(--color-nexus-bg-navy) 0%, var(--color-nexus-bg-black) 100%);
+  color: var(--foreground);
+  overflow: hidden;
+}
+
+.glass-panel {
+  background: var(--color-nexus-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--color-nexus-glass-border);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.glow-text {
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+}
